@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Food Bazar Privacy Policy – Learn how we collect, use, and protect your information for restaurant discovery, table/event booking, live food tracking, dine-in QR orders, and invitation features.">
+<title>Privacy Policy – Food Bazar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images.png">
+<style>
+  /* ── Design Tokens (Theme: #D32F2F) ── */
+  :root {
+    --primary:      #D32F2F;
+    --primary-dark: #B71C1C;
+    --primary-soft: #FFEBEE;
+    --secondary:    #E53935;
+    --accent:       #EF5350;
+    --bg:           #FAFAFB;
+    --surface:      #ffffff;
+    --surface2:     #f8fafc;
+    --border:       rgba(211, 47, 47, 0.16);
+    --text:         #1A1A2E;
+    --muted:        #64748b;
+    --shadow-sm:    0 1px 3px rgba(0,0,0,.06);
+    --shadow-md:    0 6px 24px rgba(211, 47, 47, 0.10);
+    --shadow-lg:    0 14px 40px rgba(26, 26, 46, 0.12);
+    --radius:       16px;
+    --radius-sm:    10px;
+
+    /* fluid spacing */
+    --gutter:       clamp(14px, 4vw, 24px);
+    --sec-pad-y:    clamp(20px, 4vw, 32px);
+    --sec-pad-x:    clamp(16px, 4.5vw, 36px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:           #0F0F1A;
+      --surface:      #161626;
+      --surface2:     #1D1D32;
+      --border:       rgba(211, 47, 47, 0.22);
+      --text:         #F8FAFC;
+      --muted:        #94A3B8;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,.4);
+      --shadow-md:    0 6px 24px rgba(0,0,0,.3);
+      --shadow-lg:    0 14px 40px rgba(0,0,0,.5);
+    }
+  }
+
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+  img { max-width: 100%; height: auto; display: block; }
+
+  /* ── Animated Background Blobs ── */
+  .bg-blobs {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; overflow: hidden;
+  }
+  .bg-blobs span {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .25;
+    animation: drift 18s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  .bg-blobs span:nth-child(1) {
+    width: min(520px, 90vw); height: min(520px, 90vw);
+    background: radial-gradient(circle, #D32F2F44, transparent);
+    top: -160px; left: -120px;
+    animation-duration: 20s;
+  }
+  .bg-blobs span:nth-child(2) {
+    width: min(380px, 70vw); height: min(380px, 70vw);
+    background: radial-gradient(circle, #EF535033, transparent);
+    bottom: 10%; right: -100px;
+    animation-duration: 25s; animation-delay: -8s;
+  }
+  .bg-blobs span:nth-child(3) {
+    width: min(260px, 50vw); height: min(260px, 50vw);
+    background: radial-gradient(circle, #E5393533, transparent);
+    top: 40%; left: 30%;
+    animation-duration: 30s; animation-delay: -5s;
+  }
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(40px, 30px) scale(1.08); }
+  }
+
+  /* ── Layout ── */
+  .page-wrap { position: relative; z-index: 1; }
+
+  /* ── Hero / Header ── */
+  .hero {
+    background: linear-gradient(135deg, #B71C1C 0%, #D32F2F 55%, #EF5350 100%);
+    padding: calc(clamp(36px, 8vw, 64px) + env(safe-area-inset-top, 0px)) var(--gutter) clamp(44px, 10vw, 80px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.2);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: clamp(12px, 3.2vw, 13px); font-weight: 600;
+    color: #fff;
+    margin-bottom: clamp(16px, 4vw, 24px);
+    animation: fadeDown .6s ease both;
+  }
+  .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #ffffff; display: inline-block; animation: pulse-dot 2s infinite; }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+  .logo-wrap {
+    width: clamp(76px, 20vw, 100px);
+    height: clamp(76px, 20vw, 100px);
+    background: #fff;
+    border-radius: clamp(20px, 5.5vw, 28px);
+    padding: clamp(8px, 2.4vw, 12px);
+    margin: 0 auto clamp(14px, 3.5vw, 20px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    animation: fadeDown .6s .1s ease both;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
+  .hero h1 {
+    font-size: clamp(24px, 6.5vw, 44px);
+    line-height: 1.2;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -.5px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: fadeDown .6s .2s ease both;
+  }
+  .hero p {
+    color: rgba(255,255,255,.92);
+    font-size: clamp(13px, 3.6vw, 15px);
+    margin-top: 8px;
+    animation: fadeDown .6s .3s ease both;
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Main Content ── */
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(28px, 6vw, 48px) var(--gutter) clamp(48px, 10vw, 80px);
+  }
+  .intro {
+    font-size: clamp(14px, 3.8vw, 15px);
+    color: var(--muted);
+    margin-bottom: clamp(20px, 5vw, 32px);
+    padding: 0 4px;
+  }
+
+  /* ── Section ── */
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--sec-pad-y) var(--sec-pad-x);
+    margin-bottom: clamp(14px, 3vw, 24px);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .25s, transform .25s;
+    animation: slideUp .5s ease both;
+    scroll-margin-top: 16px;
+  }
+  @media (hover: hover) {
+    .section:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Section Heading ── */
+  .section-head {
+    display: flex; align-items: center; gap: clamp(10px, 3vw, 14px);
+    margin-bottom: clamp(14px, 3.5vw, 20px);
+  }
+  .section-icon {
+    width: clamp(38px, 10vw, 44px);
+    height: clamp(38px, 10vw, 44px);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: clamp(18px, 4.5vw, 22px);
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.28);
+  }
+  .section h2 {
+    font-size: clamp(17px, 4.8vw, 20px);
+    line-height: 1.3;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -.3px;
+    min-width: 0;
+  }
+  .section h3 {
+    font-size: clamp(14px, 3.8vw, 15px);
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin: 22px 0 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section h3::before {
+    content: '';
+    width: 4px; height: 16px;
+    background: var(--primary);
+    border-radius: 2px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  p { font-size: clamp(14px, 3.8vw, 15px); color: var(--muted); margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--text); font-weight: 600; }
+
+  /* ── Lists ── */
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  ul li {
+    font-size: clamp(14px, 3.8vw, 15px);
+    color: var(--muted);
+    padding-left: 28px;
+    position: relative;
+  }
+  ul li::before {
+    content: '';
+    position: absolute; left: 0; top: 9px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.18);
+  }
+
+  /* ── Table ── */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    margin-top: 16px;
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead th {
+    background: linear-gradient(90deg, rgba(211, 47, 47, 0.12), rgba(211, 47, 47, 0.05));
+    color: var(--primary-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-size: 12px;
+    padding: 12px 16px;
+    text-align: left;
+  }
+  tbody tr { border-top: 1px solid var(--border); transition: background .2s; }
+  tbody tr:hover { background: rgba(211, 47, 47, 0.04); }
+  td { padding: 12px 16px; color: var(--muted); vertical-align: top; }
+  td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+
+  /* ── Highlight Card ── */
+  .highlight-card {
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.08) 0%, rgba(229, 57, 53, 0.05) 100%);
+    border: 1.5px solid rgba(211, 47, 47, 0.3);
+    border-radius: var(--radius-sm);
+    padding: clamp(14px, 4vw, 20px) clamp(14px, 4vw, 24px);
+    font-size: clamp(14px, 3.8vw, 15px);
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .highlight-card a {
+    color: var(--primary-dark);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary);
+    transition: border-color .2s;
+    overflow-wrap: anywhere;
+  }
+  .highlight-card a:hover { border-color: var(--primary-dark); }
+
+  /* ── Contact Card ── */
+  .section.contact-section {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .contact-card {
+    background: linear-gradient(135deg, #1A1A2E 0%, #252542 100%);
+    border-radius: var(--radius);
+    padding: clamp(28px, 6vw, 40px) clamp(18px, 4.5vw, 36px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(211, 47, 47, 0.3);
+    box-shadow: var(--shadow-lg);
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(211, 47, 47, 0.22), transparent 70%);
+    top: -100px; left: 50%; transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .contact-card h3 {
+    font-size: clamp(18px, 5vw, 22px); font-weight: 700;
+    color: #fff;
+    margin: 0 0 8px;
+    justify-content: center;
+    position: relative;
+  }
+  .contact-card h3::before { display: none; }
+  .contact-card p {
+    color: rgba(255,255,255,.7);
+    font-size: clamp(14px, 3.8vw, 15px);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .contact-email-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    font-size: clamp(14px, 4vw, 16px); font-weight: 700;
+    text-decoration: none;
+    padding: 14px 28px;
+    min-height: 48px;
+    max-width: 100%;
+    border-radius: 999px;
+    box-shadow: 0 6px 24px rgba(211, 47, 47, 0.45);
+    transition: transform .2s, box-shadow .2s;
+    position: relative;
+    overflow-wrap: anywhere;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .contact-email-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(211, 47, 47, 0.6);
+  }
+  .contact-email-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 28px var(--gutter) calc(28px + env(safe-area-inset-bottom, 0px));
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--primary); text-decoration: none; overflow-wrap: anywhere; }
+
+  /* ── Mobile ── */
+  @media (max-width: 600px) {
+    .bg-blobs span { filter: blur(60px); opacity: .24; }
+    .table-wrap { overflow: visible; border: none; margin-top: 14px; }
+    table, thead, tbody, tr, td { display: block; width: 100%; }
+    thead {
+      position: absolute; width: 1px; height: 1px;
+      overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+    }
+    tbody { display: flex; flex-direction: column; gap: 10px; }
+    tbody tr {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface2);
+      padding: 12px 14px;
+    }
+    td { padding: 0; }
+    td:first-child {
+      white-space: normal;
+      color: var(--primary);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      margin-bottom: 4px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .contact-email-btn { width: 100%; padding: 14px 16px; }
+    ul li { padding-left: 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-blobs" aria-hidden="true">
+  <span></span><span></span><span></span>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-badge"><span class="dot"></span> Privacy Policy</div>
+    <div class="logo-wrap">
+      <img src="images.png" alt="Food Bazar logo">
+    </div>
+    <h1>Food Bazar Privacy Policy</h1>
+    <p>Last updated: October 27, 2026 &nbsp;·&nbsp; Effective immediately</p>
+  </header>
+
+  <main>
+    <!-- Intro -->
+    <p class="intro">
+      This Privacy Policy describes how <strong>Food Bazar</strong> ("we", "us", "our") collects, uses, processes, and protects your personal data when you use the <strong>Food Bazar</strong> mobile application and services. We are dedicated to respecting your privacy while providing an intuitive, interactive marketplace for table bookings, dining orders, live food tracking, map-based discovery, and social event sharing.
+    </p>
+
+    <!-- 1. About Food Bazar -->
+    <section class="section" id="s1">
+      <div class="section-head">
+        <div class="section-icon">🍽️</div>
+        <h2>1. About Food Bazar &amp; Services</h2>
+      </div>
+      <p>Food Bazar is a comprehensive digital dining, food ordering, and event-booking platform. Through our mobile application, you can:</p>
+      <ul>
+        <li><strong>Discover &amp; Explore:</strong> Find nearby restaurants, cafes, and community centers via interactive map navigation.</li>
+        <li><strong>Pre-order &amp; Table Booking:</strong> Reserve tables with customized food choices and pre-set menus ahead of your arrival.</li>
+        <li><strong>Dine-In QR Scan:</strong> Scan QR codes placed on restaurant tables using your camera to instantly view digital menus and place dine-in orders directly.</li>
+        <li><strong>Live Food Updates:</strong> Track real-time kitchen preparation status, delivery dispatch, and live order milestones.</li>
+        <li><strong>Online &amp; Digital Payments:</strong> Pay for orders, advance reservation deposits, or dining bills securely via integrated payment gateways.</li>
+        <li><strong>Social Invitations &amp; Event Sharing:</strong> Host and organize group gatherings, weddings, birthdays, or anniversary events at community halls/restaurants, and invite friends and family through shareable in-app links or cards.</li>
+      </ul>
+    </section>
+
+    <!-- 2. Information We Collect -->
+    <section class="section" id="s2">
+      <div class="section-head">
+        <div class="section-icon">📋</div>
+        <h2>2. Information We Collect</h2>
+      </div>
+
+      <h3>2.1 Information You Provide Directly</h3>
+      <ul>
+        <li><strong>Account Profile:</strong> Full name, phone number, email address, profile picture (optional), and encrypted passwords.</li>
+        <li><strong>Pre-Orders &amp; Food Preferences:</strong> Selected food dishes, ingredient notes, dietary preferences, spice level customizations, and special culinary requests.</li>
+        <li><strong>Table &amp; Venue Bookings:</strong> Date, seating time, table counts, guest counts, and special seating arrangements.</li>
+        <li><strong>Event Hosting Details:</strong> Event titles, categories (e.g., Wedding, Birthday, Anniversary, Corporate Party), community center or restaurant hall selections, and event schedules.</li>
+        <li><strong>Friends &amp; Family Invitations:</strong> Contact details or phone numbers you input to share digital invitations, and RSVP responses submitted by your guests.</li>
+        <li><strong>Reviews, Ratings &amp; Feedback:</strong> Comments, food photos you upload to reviews, and customer support queries.</li>
+      </ul>
+
+      <h3>2.2 Information Collected Automatically &amp; Permissions</h3>
+      <ul>
+        <li><strong>Precise &amp; Approximate Location (GPS &amp; Maps):</strong> Collected only with your explicit permission to plot nearby restaurants on the map, measure driving/walking distance, and display accurate estimated arrival/delivery times.</li>
+        <li><strong>Camera &amp; QR Scanner:</strong> Accessed exclusively to scan table QR codes at partner venues to load instant menus and associate orders with your specific table. We never record, capture, or store background video or unauthorized photos.</li>
+        <li><strong>Device &amp; Telemetry Data:</strong> Hardware model, operating system version, IP address, unique device identifiers, and crash logs to maintain app stability.</li>
+        <li><strong>Push Notification Tokens:</strong> Used to alert you about real-time food preparation status, booking confirmations, invite acceptances, and event updates.</li>
+      </ul>
+
+      <h3>2.3 Financial &amp; Payment Data</h3>
+      <p>Payments are handled by secure, PCI-DSS compliant third-party payment gateways (e.g., bKash, Nagad, Visa, Mastercard). We <strong>never</strong> record, access, or store your credit/debit card numbers, CVVs, or mobile financial service PINs. We only retain the transaction reference ID, payment timestamp, and transaction status.</p>
+    </section>
+
+    <!-- 3. How We Use -->
+    <section class="section" id="s3">
+      <div class="section-head">
+        <div class="section-icon">⚙️</div>
+        <h2>3. How We Use Your Information</h2>
+      </div>
+      <ul>
+        <li><strong>Service Execution:</strong> To confirm table reservations, relay pre-selected menu items to restaurant kitchens, and manage venue bookings for events.</li>
+        <li><strong>Map &amp; Location Services:</strong> To showcase curated restaurant listings within your geographical radius and calculate travel routes.</li>
+        <li><strong>Real-time Food Tracking:</strong> To push instant status alerts as your order moves from "Order Received" to "Preparing", "Ready for Pickup", or "Served".</li>
+        <li><strong>Social Gathering &amp; Invitation Management:</strong> To generate invitation links, manage RSVP guest lists for your weddings, birthdays, or celebrations, and notify invited attendees.</li>
+        <li><strong>Safety &amp; Fraud Prevention:</strong> To verify accounts via OTP, authenticate dine-in QR orders, prevent fake reservations, and resolve disputes.</li>
+        <li><strong>App Optimization:</strong> To fix crashes, enhance UI/UX workflows, and ensure reliable performance across devices.</li>
+      </ul>
+    </section>
+
+    <!-- 4. Information Sharing -->
+    <section class="section" id="s4">
+      <div class="section-head">
+        <div class="section-icon">🤝</div>
+        <h2>4. Who We Share Your Data With</h2>
+      </div>
+      <p>We do <strong>not</strong> sell or rent your personal data to advertisers. We share information strictly on a need-to-know basis as outlined below:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Recipient</th><th>Information Shared &amp; Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Partner Restaurants &amp; Venues</td>
+              <td>Name, phone number, customized food selections, seating time, table ID, and event reservation details to prepare food and reserve spaces.</td>
+            </tr>
+            <tr>
+              <td>Invited Friends &amp; Family</td>
+              <td>Event host name, venue map location, event date/time, and celebration details displayed on invitation cards sent by you.</td>
+            </tr>
+            <tr>
+              <td>Map &amp; Location Providers (e.g., Google Maps API)</td>
+              <td>Coordinates and device location requests to render dynamic map markers, nearby outlets, and route calculations.</td>
+            </tr>
+            <tr>
+              <td>Payment Service Providers</td>
+              <td>Order totals, currency, and invoice references required to complete encrypted checkout and process refunds.</td>
+            </tr>
+            <tr>
+              <td>Infrastructure &amp; Notification Vendors (e.g., Firebase)</td>
+              <td>Encrypted tokens and device logs to dispatch real-time food tracking alerts and order notifications.</td>
+            </tr>
+            <tr>
+              <td>Law Enforcement &amp; Legal Authorities</td>
+              <td>Disclosed only when strictly required by applicable law, court subpoena, or to protect the vital safety of users and venue staff.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. Data Retention -->
+    <section class="section" id="s5">
+      <div class="section-head">
+        <div class="section-icon">🗄️</div>
+        <h2>5. Data Retention</h2>
+      </div>
+      <p>We retain your profile data for as long as you maintain an active Food Bazar account. Event invitations, past order histories, and table bookings are preserved to help you re-order favorites and manage booking histories. Financial transaction logs are archived in accordance with standard statutory, accounting, and tax compliance obligations before being securely deleted or anonymized.</p>
+    </section>
+
+    <!-- 6. User Rights & Permissions Control -->
+    <section class="section" id="s6">
+      <div class="section-head">
+        <div class="section-icon">🛡️</div>
+        <h2>6. Your Rights and Permissions Control</h2>
+      </div>
+      <ul>
+        <li><strong>Location Permission:</strong> You can enable or disable GPS location anytime through your device settings. If disabled, you can still search for venues manually by typing area names.</li>
+        <li><strong>Camera Permission:</strong> Camera access is strictly requested for QR code scanning. You may revoke camera permission at any time in your phone's system settings.</li>
+        <li><strong>Invitations &amp; Event Visibility:</strong> Events you create can only be viewed by individuals with whom you explicitly share the invitation code/link.</li>
+        <li><strong>Notification Preferences:</strong> Push notifications for live food tracking and marketing alerts can be toggled via app or system settings.</li>
+        <li><strong>Access &amp; Rectification:</strong> You may edit your profile information, saved addresses, and preferences directly in the app.</li>
+      </ul>
+    </section>
+
+    <!-- 7. Account & Data Deletion -->
+    <section class="section" id="s7">
+      <div class="section-head">
+        <div class="section-icon">🗑️</div>
+        <h2>7. Account and Data Deletion</h2>
+      </div>
+      <div class="highlight-card">
+        You hold full ownership of your data. To permanently delete your Food Bazar account, order history, and shared event logs, you can use the <strong>"Delete Account"</strong> button in your in-app profile settings, or send an email from your registered email address to:
+        <br><br>
+        <a href="mailto:apps@plexus.com.bd">apps@plexus.com.bd</a> with the subject <strong>"Delete My Food Bazar Account"</strong>.
+        <br><br>
+        All personal identifiers will be permanently purged from our active databases within <strong>30 days</strong>, excluding mandatory tax or audit transaction records required by local law.
+      </div>
+    </section>
+
+    <!-- 8. Security -->
+    <section class="section" id="s8">
+      <div class="section-head">
+        <div class="section-icon">🔒</div>
+        <h2>8. Data Security</h2>
+      </div>
+      <p>We employ industry-standard administrative, physical, and technical safeguards. All network data transmissions between the App and our cloud servers are encrypted using modern Transport Layer Security (TLS/HTTPS). Critical credentials and tokens are stored in protected, access-controlled environments.</p>
+    </section>
+
+    <!-- 9. Children's Privacy -->
+    <section class="section" id="s9">
+      <div class="section-head">
+        <div class="section-icon">👶</div>
+        <h2>9. Children's Privacy</h2>
+      </div>
+      <p>The Food Bazar platform is not intended for unsupervised children under 13 years of age. We do not intentionally collect personal data from minors. If a parent or guardian discovers that a minor has registered an account without consent, please contact us for immediate profile deletion.</p>
+    </section>
+
+    <!-- 10. Third-Party Integrations -->
+    <section class="section" id="s10">
+      <div class="section-head">
+        <div class="section-icon">🔗</div>
+        <h2>10. Third-Party Links &amp; Integrations</h2>
+      </div>
+      <p>The App integrates third-party tools such as mapping solutions (e.g., Google Maps) and payment gateway providers. We advise you to read their independent privacy policies, as their processing protocols remain under their respective terms.</p>
+    </section>
+
+    <!-- 11. Policy Changes -->
+    <section class="section" id="s11">
+      <div class="section-head">
+        <div class="section-icon">🔄</div>
+        <h2>11. Policy Updates</h2>
+      </div>
+      <p>We may periodically update this policy to reflect new app features, venue partner requirements, or legal standards. Changes will be posted immediately with a revised "Last updated" date. Continued use of Food Bazar constitutes your acceptance of these terms.</p>
+    </section>
+
+    <!-- 12. Contact Card -->
+    <section class="section contact-section" id="s12">
+      <div class="contact-card">
+        <h3>💬 Contact &amp; Privacy Support</h3>
+        <p>Have questions about table bookings, event invitations, or your personal data? Reach out to our privacy team:</p>
+        <a class="contact-email-btn" href="mailto:apps@plexus.com.bd" id="contact-email-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          apps@plexus.com.bd
+        </a>
+      </div>
+    </section>
+  </main>
+  <!-- ── Footer ── -->
+  <footer>
+    <p>&copy; 2026 Food Bazar &mdash; All rights reserved. &nbsp;|&nbsp; <a href="mailto:apps@plexus.com.bd">apps@plexus.com.bd</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
